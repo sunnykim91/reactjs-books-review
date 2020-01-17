@@ -15,7 +15,7 @@ const App = () => (
           <Link to='/'>홈입니다용</Link>
         </li>
         <li>
-          <Link to='/signin'>로그인</Link>
+          <Link to='/signin'>로그인입니다용</Link>
         </li>
       </ul>
       <Switch>
