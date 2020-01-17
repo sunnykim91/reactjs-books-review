@@ -12,7 +12,7 @@ const App = () => (
     <BrowserRouter>
       <ul>
         <li>
-          <Link to='/'>홈</Link>
+          <Link to='/'>홈입니다용</Link>
         </li>
         <li>
           <Link to='/signin'>로그인</Link>
