@@ -1,7 +1,12 @@
 import React from 'react';
+import Signin from './Signin';
 
 const Home = () => {
-  return <div>Home입니다.</div>;
+  return (
+    <div>
+      <Signin />
+    </div>
+  );
 };
 
 export default Home;
