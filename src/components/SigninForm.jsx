@@ -1,8 +1,10 @@
-import React, { createRef } from 'react';
+import React, { createRef, useState } from 'react';
 import { Col } from 'antd';
 import styled from 'styled-components';
-import { Input, Button } from 'antd';
+import { Input, Button, message } from 'antd';
 import './SigninForm.css';
+import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 const StyledCol = styled(Col).attrs(() => ({
   span: 12
@@ -39,11 +41,37 @@ const SigninForm = () => {
   const emailRef = createRef();
   const passwordRef = createRef();
 
-  const click = () => {
+  const history = useHistory();
+  const [loading, setLoading] = useState(false);
+
+  const click = async () => {
     const email = emailRef.current.state.value;
     const password = passwordRef.current.state.value;
 
     console.log(email, password);
+
+    try {
+      setLoading(true);
+      const response = await axios.post('https://api.marktube.tv/v1/me', {
+        email,
+        password
+      });
+      const { token } = response.data;
+      setLoading(false);
+      localStorage.setItem('token', token);
+      history.push('/');
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+      if (error.response.data.error === 'USER_NOT_EXIST') {
+        message.error('유저가 없습니다.');
+      }
+      if (error.response.data.error === 'PASSWORD_NOT_MATCH') {
+        message.error('비밀번호가 틀렸습니다.');
+      } else {
+        message.error('로그인에 문제가 있습니다.');
+      }
+    }
   };
 
   return (
@@ -64,6 +92,7 @@ const SigninForm = () => {
           </div>
           <Input
             ref={passwordRef}
+            type='password'
             className='inputPassword'
             placeholder='input password'
           />
