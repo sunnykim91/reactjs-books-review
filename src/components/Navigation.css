@@ -5,3 +5,9 @@
   margin: 16px 24px 16px 0;
   float: left;
 }
+
+.signOutBtn {
+  position: absolute;
+  top: 1.5%;
+  right: 3%;
+}
