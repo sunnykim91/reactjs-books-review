@@ -1,0 +1,22 @@
+.addBookBtn {
+  text-align: end;
+}
+.textEditDeleteBtn {
+  text-align: end;
+}
+
+.editBtn {
+  margin-right: 10px;
+}
+
+.footer {
+  text-align: right;
+}
+
+.ant-modal-header {
+  background: floralwhite;
+}
+
+.ant-modal-title {
+  color: hotpink;
+}

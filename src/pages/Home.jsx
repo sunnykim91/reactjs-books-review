@@ -20,7 +20,7 @@ const Home = ({ token }) => {
   return (
     <Layout>
       <Navigation />
-      <Content style={{ padding: '50px', marginTop: 64 }}>
+      <Content style={{ padding: '50px', background: 'lavenderblush' }}>
         <div style={{ background: '#fff', padding: 24, minHeight: 380 }}>
           <StyleImg src={bgBook} />
           hello
