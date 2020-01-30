@@ -37,12 +37,12 @@ const StyledBottomDiv = styled.div`
   margin-top: 20px;
 `;
 
-const SigninForm = () => {
+const SigninForm = ({ setToken, startLoading, endLoading, loading }) => {
   const emailRef = createRef();
   const passwordRef = createRef();
 
   const history = useHistory();
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
   const click = async () => {
     const email = emailRef.current.state.value;
@@ -51,18 +51,22 @@ const SigninForm = () => {
     console.log(email, password);
 
     try {
-      setLoading(true);
+      // setLoading(true);
+      startLoading();
       const response = await axios.post('https://api.marktube.tv/v1/me', {
         email,
         password
       });
       const { token } = response.data;
-      setLoading(false);
+      // setLoading(false);
+      endLoading();
       localStorage.setItem('token', token);
+      setToken(token);
       history.push('/');
     } catch (error) {
       console.log(error);
-      setLoading(false);
+      // setLoading(false);
+      endLoading();
       if (error.response.data.error === 'USER_NOT_EXIST') {
         message.error('유저가 없습니다.');
       }

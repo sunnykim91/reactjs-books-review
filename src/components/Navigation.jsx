@@ -3,11 +3,14 @@ import { Layout, Menu, Button } from 'antd';
 import './Navigation.css';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { removeToken } from '../actions';
 
 const { Header } = Layout;
 
 const Navigation = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const handleOnClick = e => {
     console.log(e.key);
@@ -30,10 +33,10 @@ const Navigation = () => {
         }
       });
       localStorage.removeItem('token');
+      dispatch(removeToken());
       if (response.data.success) {
         alert('로그아웃 되었습니다.');
       }
-      history.push('/signin');
     } catch (error) {
       console.log(error);
     }
