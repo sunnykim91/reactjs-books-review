@@ -12,8 +12,6 @@ const StyleImg = styled.img`
   height: 80vh;
 `;
 
-// const StyleDiv = styled.div``;
-
 const Home = ({ token }) => {
   console.log(token);
 

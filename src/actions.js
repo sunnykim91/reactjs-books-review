@@ -18,3 +18,10 @@ export const startLoading = () => ({
 export const endLoading = () => ({
   type: END_LOADING
 });
+
+export const GET_BOOK_LIST = 'GET_BOOK_LIST';
+
+export const getBookList = books => ({
+  type: GET_BOOK_LIST,
+  books
+});
