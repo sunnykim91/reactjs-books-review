@@ -5,9 +5,7 @@ import withAuth from '../hocs/withAuth';
 import { Layout, Icon, Button, Modal, List } from 'antd';
 import AddBook from '../components/AddBook';
 import './BookList.css';
-import { connect } from 'react-redux';
-import { getBookList } from '../actions';
-import bookList from '../reducer/books';
+import BookContainer from '../containers/BookContainer';
 
 const { Content } = Layout;
 export const BookListContext = createContext(null);
@@ -74,54 +72,14 @@ const BookList = ({ books, getBookList, token }) => {
               책 추가하기
             </Button>
           </div>
-          <List
-            itemLayout='vertical'
-            size='large'
-            pagination={{
-              pageSize: 5
-            }}
-            dataSource={books}
-            footer={
-              <div className='footer'>
-                개발 서적 평가 서비스 <b>by Sunnykim</b>
-              </div>
-            }
-            renderItem={book => (
-              <List.Item
-                key={book.bookId}
-                extra={<img width={100} alt='logo' src={book.url} />}
-              >
-                <List.Item.Meta title={book.title} />
-                <div className='author'>저자 : {book.author}</div>
-                <div className='description'>설명 : {book.message}</div>
-                <div className='textEditDeleteBtn'>
-                  <Icon
-                    type='edit'
-                    className='editBtn'
-                    onClick={() => modifyBook(book.bookId)}
-                  />
-                  {/* <Icon type='delete' onClick={() => removeBook(book.bookId)} /> */}
-                </div>
-              </List.Item>
-            )}
-          />
+          <BookContainer />
         </div>
       </Content>
     </>
   );
 };
 
-const mapStateToProps = state => ({
-  books: state.books
-});
-
-const mapDispatchToProps = dispatch => ({
-  getBookList: books => {
-    dispatch(getBookList(books));
-  }
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(withAuth(BookList));
+export default withAuth(BookList);
 
 // import React, { useState, useEffect, createContext, useCallback } from 'react';
 // import axios from 'axios';

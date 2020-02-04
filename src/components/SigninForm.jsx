@@ -1,4 +1,4 @@
-import React, { createRef, useState } from 'react';
+import React, { createRef, useEffect } from 'react';
 import { Col } from 'antd';
 import styled from 'styled-components';
 import { Input, Button, message } from 'antd';
@@ -37,7 +37,7 @@ const StyledBottomDiv = styled.div`
   margin-top: 20px;
 `;
 
-const SigninForm = ({ setToken, startLoading, endLoading, loading }) => {
+const SigninForm = ({ login, error, loading }) => {
   const emailRef = createRef();
   const passwordRef = createRef();
 
@@ -48,35 +48,50 @@ const SigninForm = ({ setToken, startLoading, endLoading, loading }) => {
     const email = emailRef.current.state.value;
     const password = passwordRef.current.state.value;
 
-    console.log(email, password);
-
     try {
-      // setLoading(true);
-      startLoading();
-      const response = await axios.post('https://api.marktube.tv/v1/me', {
-        email,
-        password
-      });
-      const { token } = response.data;
-      // setLoading(false);
-      endLoading();
-      localStorage.setItem('token', token);
-      setToken(token);
+      await login(email, password);
       history.push('/');
-    } catch (error) {
-      console.log(error);
-      // setLoading(false);
-      endLoading();
-      if (error.response.data.error === 'USER_NOT_EXIST') {
-        message.error('유저가 없습니다.');
-      }
-      if (error.response.data.error === 'PASSWORD_NOT_MATCH') {
-        message.error('비밀번호가 틀렸습니다.');
-      } else {
-        message.error('로그인에 문제가 있습니다.');
-      }
-    }
+    } catch {}
   };
+
+  useEffect(() => {
+    console.log(error);
+    if (error === null) return null;
+    // if (error.response.data.error === 'USER_NOT_EXIST') {
+    //   message.error('유저가 없습니다.');
+    // } else if (error.response.data.error === 'PASSWORD_NOT_MATCH') {
+    //   message.error('비밀번호가 틀렸습니다.');
+    // } else {
+    //   message.error('로그인에 문제가 있습니다.');
+    // }
+  }, [error]);
+  // const click = async () => {
+  //   const email = emailRef.current.state.value;
+  //   const password = passwordRef.current.state.value;
+
+  //   console.log(email, password);
+
+  //   try {
+  //     // setLoading(true);
+  //     startLoading();
+  //     const response = await axios.post('https://api.marktube.tv/v1/me', {
+  //       email,
+  //       password
+  //     });
+  //     const { token } = response.data;
+  //     // setLoading(false);
+  //     endLoading();
+  //     localStorage.setItem('token', token);
+  //     setToken(token);
+  //     history.push('/');
+  //   } catch (error) {
+  //     console.log(error.response);
+  //     // setLoading(false);
+  //     endLoading();
+  //     const errorMsg = error.response.data.error;
+  //     setError(errorMsg);
+  //   }
+  // };
 
   return (
     <StyledCol>

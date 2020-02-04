@@ -1,11 +1,10 @@
-import { GET_BOOK_LIST } from '../actions';
+import { SET_BOOKS } from '../actions';
 
 const initialState = [];
 
 const books = (state = initialState, action) => {
   console.log('book reducer', action);
-  if (action.type === GET_BOOK_LIST) {
-    console.log('getbooklist', [...action.books]);
+  if (action.type === SET_BOOKS) {
     return [...action.books];
   }
 
