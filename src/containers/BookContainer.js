@@ -1,25 +1,20 @@
 import Books from '../components/Books';
 import { connect } from 'react-redux';
-import { setBooksThunk } from '../actions';
-import axios from 'axios';
+import { setBooksThunk, setBooksPromise } from '../actions';
 
 export default connect(
   state => ({
     books: state.books,
-    token: state.token
+    token: state.token,
+    loading: state.loading,
+    error: state.error
   }),
   dispatch => ({
     setBooks: token => {
-      axios
-        .get('https://api.marktube.tv/v1/book', {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        })
-        .then(res => {
-          console.log(res);
-          setBooks(res.data);
-        });
+      dispatch(setBooksThunk(token));
+    },
+    setBooksPromise: token => {
+      dispatch(setBooksPromise(token));
     }
   })
 )(Books);

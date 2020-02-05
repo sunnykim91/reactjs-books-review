@@ -1,35 +1,26 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState } from 'react';
 import withAuth from '../hocs/withAuth';
-import axios from 'axios';
 import { Input, Button } from 'antd';
-import { BookListContext } from '../pages/BookList';
 import './AddBook.css';
 
-const AddBook = ({ token }) => {
-  const contextValue = useContext(BookListContext);
-
+const AddBook = ({ token, addBook }) => {
   const [title, setTitle] = useState('');
   const [message, setMessage] = useState('');
   const [author, setAuthor] = useState('');
   const [url, setUrl] = useState('');
 
   const onClickaddBook = async () => {
-    console.log(title, message, author, url);
-    let data = {
+    console.log(addBook);
+    console.log(token);
+    const book = {
       title: title,
       message: message,
       author: author,
       url: url
     };
-    const response = await axios.post('https://api.marktube.tv/v1/book', data, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    });
-    if (response.status === 200) {
-      contextValue.getBookList();
-    }
-    contextValue.setIsAddbookFormOpen(!contextValue.isAddbookFormOpen);
+    try {
+      await addBook(token, book);
+    } catch {}
   };
 
   const handleTitle = e => {
@@ -45,10 +36,6 @@ const AddBook = ({ token }) => {
   const handleURL = e => {
     setUrl(e.target.value);
   };
-
-  useEffect(() => {
-    console.log('use effect');
-  }, [contextValue.books]);
 
   return (
     <div className='addBookModal'>

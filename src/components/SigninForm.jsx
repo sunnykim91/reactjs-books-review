@@ -3,8 +3,6 @@ import { Col } from 'antd';
 import styled from 'styled-components';
 import { Input, Button, message } from 'antd';
 import './SigninForm.css';
-import axios from 'axios';
-import { useHistory } from 'react-router-dom';
 
 const StyledCol = styled(Col).attrs(() => ({
   span: 12
@@ -38,11 +36,9 @@ const StyledBottomDiv = styled.div`
 `;
 
 const SigninForm = ({ login, error, loading }) => {
+  console.log(error);
   const emailRef = createRef();
   const passwordRef = createRef();
-
-  const history = useHistory();
-  // const [loading, setLoading] = useState(false);
 
   const click = async () => {
     const email = emailRef.current.state.value;
@@ -50,20 +46,21 @@ const SigninForm = ({ login, error, loading }) => {
 
     try {
       await login(email, password);
-      history.push('/');
     } catch {}
   };
 
   useEffect(() => {
     console.log(error);
-    if (error === null) return null;
-    // if (error.response.data.error === 'USER_NOT_EXIST') {
-    //   message.error('유저가 없습니다.');
-    // } else if (error.response.data.error === 'PASSWORD_NOT_MATCH') {
-    //   message.error('비밀번호가 틀렸습니다.');
-    // } else {
-    //   message.error('로그인에 문제가 있습니다.');
-    // }
+
+    if (error === null) return;
+
+    if (error.response.data.error === 'USER_NOT_EXIST') {
+      message.error('유저가 없습니다.');
+    } else if (error.response.data.error === 'PASSWORD_NOT_MATCH') {
+      message.error('비밀번호가 틀렸습니다.');
+    } else {
+      message.error('로그인에 문제가 있습니다.');
+    }
   }, [error]);
   // const click = async () => {
   //   const email = emailRef.current.state.value;
@@ -119,7 +116,7 @@ const SigninForm = ({ login, error, loading }) => {
         <Button
           type='primary'
           style={{ marginBottom: '30px' }}
-          loading={false}
+          loading={loading}
           onClick={click}
         >
           SIGN IN

@@ -1,50 +1,16 @@
-import React, { useState, useEffect, createContext, useCallback } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 import Navigation from '../components/Navigation';
 import withAuth from '../hocs/withAuth';
-import { Layout, Icon, Button, Modal, List } from 'antd';
-import AddBook from '../components/AddBook';
+import { Layout, Button, Modal } from 'antd';
 import './BookList.css';
 import BookContainer from '../containers/BookContainer';
+import AddBookContainer from '../containers/AddBookContainer';
 
 const { Content } = Layout;
-export const BookListContext = createContext(null);
 
-const BookList = ({ books, getBookList, token }) => {
+const BookList = ({ token }) => {
   const [isAddbookFormOpen, setIsAddbookFormOpen] = useState(false);
   const [visible] = useState(false);
-
-  const getBooks = useCallback(() => {
-    axios
-      .get('https://api.marktube.tv/v1/book', {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      })
-      .then(res => {
-        console.log(res);
-        getBookList(res.data);
-        // setBooks(res.data);
-      });
-  }, [token]);
-
-  // const removeBook = id => {
-  //   axios
-  //     .delete(`https://api.marktube.tv/v1/book/${id}`, {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`
-  //       }
-  //     })
-  //     .then(setBooks(books.filter(book => book.bookId !== id)));
-  // };
-
-  const modifyBook = id => {
-    console.log(id);
-  };
-
-  useEffect(() => {
-    getBooks();
-  }, [getBooks, token]);
 
   return (
     <>
@@ -63,7 +29,7 @@ const BookList = ({ books, getBookList, token }) => {
             footer={null}
             onCancel={() => setIsAddbookFormOpen(!isAddbookFormOpen)}
           >
-            <AddBook />
+            <AddBookContainer />
           </Modal>
         ) : null}
         <div style={{ background: '#fff', padding: 24, minHeight: 380 }}>

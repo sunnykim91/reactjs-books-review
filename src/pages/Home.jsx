@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import withAuth from '../hocs/withAuth';
 import styled from 'styled-components';
 import Navigation from '../components/Navigation';
