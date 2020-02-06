@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navigation from '../components/Navigation';
 import withAuth from '../hocs/withAuth';
 import { Layout, Button, Modal } from 'antd';
@@ -11,6 +11,10 @@ const { Content } = Layout;
 const BookList = ({ token }) => {
   const [isAddbookFormOpen, setIsAddbookFormOpen] = useState(false);
   const [visible] = useState(false);
+
+  useEffect(() => {
+    console.log('useEffect 실행되었습니다');
+  }, [setIsAddbookFormOpen]);
 
   return (
     <>
@@ -29,7 +33,10 @@ const BookList = ({ token }) => {
             footer={null}
             onCancel={() => setIsAddbookFormOpen(!isAddbookFormOpen)}
           >
-            <AddBookContainer />
+            <AddBookContainer
+              isAddbookFormOpen={isAddbookFormOpen}
+              setIsAddbookFormOpen={setIsAddbookFormOpen}
+            />
           </Modal>
         ) : null}
         <div style={{ background: '#fff', padding: 24, minHeight: 380 }}>

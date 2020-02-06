@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react';
 import { Icon, List } from 'antd';
 
-const Books = ({ token, books, setBooksPromise, error, loading }) => {
+const Books = ({ token, books, getBooks, error, loading, deleteBook }) => {
+  const removeBook = async bookId => {
+    await deleteBook(token, bookId);
+  };
+
   useEffect(() => {
-    // setBooks(token);
-    setBooksPromise(token);
-  }, [token, setBooksPromise]);
+    getBooks(token);
+  }, [token, getBooks]);
 
   if (error !== null) {
     return <div>에러다</div>;
@@ -36,7 +39,7 @@ const Books = ({ token, books, setBooksPromise, error, loading }) => {
             <div className='description'>설명 : {book.message}</div>
             <div className='textEditDeleteBtn'>
               <Icon type='edit' className='editBtn' />
-              {/* <Icon type='delete' onClick={() => removeBook(book.bookId)} /> */}
+              <Icon type='delete' onClick={() => removeBook(book.bookId)} />
             </div>
           </List.Item>
         )}

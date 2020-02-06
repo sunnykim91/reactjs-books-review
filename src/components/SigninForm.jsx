@@ -40,12 +40,12 @@ const SigninForm = ({ login, error, loading }) => {
   const emailRef = createRef();
   const passwordRef = createRef();
 
-  const click = async () => {
+  const click = () => {
     const email = emailRef.current.state.value;
     const password = passwordRef.current.state.value;
 
     try {
-      await login(email, password);
+      login(email, password);
     } catch {}
   };
 

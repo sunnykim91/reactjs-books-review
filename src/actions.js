@@ -109,7 +109,7 @@ export const BOOKS_REJECTED = 'BOOKS_REJECTED';
 export const setBooksPromise = token => ({
   type: BOOKS,
   payload: new Promise(async resolve => {
-    await sleep(2000);
+    await sleep(1000);
     const res = await BookService.getBooks(token);
     resolve(res);
   })
@@ -126,6 +126,24 @@ export const addBookThunk = (token, book) => async dispatch => {
   try {
     const res = await BookService.addBook(token, book);
     console.log(res);
+    dispatch(setBooksPromise(token));
+  } catch (error) {
+    dispatch(setError(error));
+  }
+};
+
+export const DELETE_BOOK = 'DELETE_BOOK';
+
+export const deleteBook = bookId => ({
+  type: DELETE_BOOK,
+  bookId
+});
+
+export const deleteBookThunk = (token, bookId) => async dispatch => {
+  try {
+    const res = await BookService.deleteBook(token, bookId);
+    console.log(res);
+    dispatch(setBooksPromise(token));
   } catch (error) {
     dispatch(setError(error));
   }
