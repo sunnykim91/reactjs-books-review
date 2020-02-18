@@ -53,24 +53,7 @@ export const loginThunk = (email, password) => async dispatch => {
   }
 };
 
-export const logoutThunk = token => async dispatch => {
-  // 서버에 알려주기
-  try {
-    await axios.delete('https://api.marktube.tv/v1/me', {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    });
-  } catch (error) {
-    console.log(error);
-  }
 
-  // 토큰 지우기
-  localStorage.removeItem('token');
-
-  // 리덕스 토큰 지우기
-  dispatch(removeToken());
-};
 
 export const SET_BOOKS = 'SET_BOOKS';
 
@@ -79,27 +62,8 @@ export const setBooks = books => ({
   books
 });
 
-export const setBooksThunk = token => async dispatch => {
-  try {
-    dispatch(startLoading());
-    dispatch(clearError());
-    await sleep(2000);
-    const res = await BookService.getBooks(token);
-    dispatch(endLoading());
-    dispatch(setBooks(res.data));
-  } catch (error) {
-    dispatch(endLoading());
-    dispatch(setError(error));
-  }
-};
 
-function sleep(ms) {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve();
-    }, ms);
-  });
-}
+
 
 export const BOOKS = 'BOOKS';
 export const BOOKS_PENDING = 'BOOKS_PENDING';
