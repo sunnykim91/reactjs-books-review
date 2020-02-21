@@ -14,7 +14,6 @@ const AddBook = ({ token }) => {
   const [url, setUrl] = useState('');
 
   const onClickaddBook = async () => {
-    console.log(title, message, author, url);
     let data = {
       title: title,
       message: message,
@@ -46,9 +45,7 @@ const AddBook = ({ token }) => {
     setUrl(e.target.value);
   };
 
-  useEffect(() => {
-    console.log('use effect');
-  }, [contextValue.books]);
+  useEffect(() => {}, [contextValue.books]);
 
   return (
     <div className='addBookModal'>

@@ -1,10 +1,11 @@
 import React, { useState, useEffect, createContext, useCallback } from 'react';
-import axios from 'axios';
 import Navigation from '../components/Navigation';
 import withAuth from '../hocs/withAuth';
 import { Layout, Icon, Button, Modal, List } from 'antd';
 import AddBook from '../components/AddBook';
 import './BookList.css';
+import RequestService from '../service/RequestService';
+import ModifyBook from '../components/ModifyBook';
 
 const { Content } = Layout;
 export const BookListContext = createContext(null);
@@ -12,40 +13,35 @@ export const BookListContext = createContext(null);
 const BookList = ({ token }) => {
   const [books, setBooks] = useState([]);
   const [isAddbookFormOpen, setIsAddbookFormOpen] = useState(false);
+  const [isModifybookFormOpen, setIsModifybookFormOpen] = useState(false);
   const [visible] = useState(false);
+  const [targetId, setTargetId] = useState(null);
 
   const getBookList = useCallback(() => {
-    axios
-      .get('https://api.marktube.tv/v1/book', {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      })
-      .then(res => {
-        console.log(res);
-        setBooks(res.data);
-      });
+    RequestService.getBooks(token).then(res => {
+      setBooks(res.data);
+    });
   }, [token]);
 
   const contextValue = {
     isAddbookFormOpen,
     setIsAddbookFormOpen,
+    isModifybookFormOpen,
+    setIsModifybookFormOpen,
     books,
-    getBookList
+    getBookList,
+    targetId
   };
 
   const removeBook = id => {
-    axios
-      .delete(`https://api.marktube.tv/v1/book/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      })
-      .then(setBooks(books.filter(book => book.bookId !== id)));
+    RequestService.deleteBook(token, id).then(
+      setBooks(books.filter(book => book.bookId !== id))
+    );
   };
 
   const modifyBook = id => {
-    console.log(id);
+    setIsModifybookFormOpen(!isModifybookFormOpen);
+    setTargetId(id);
   };
 
   useEffect(() => {
@@ -70,6 +66,17 @@ const BookList = ({ token }) => {
             onCancel={() => setIsAddbookFormOpen(!isAddbookFormOpen)}
           >
             <AddBook />
+          </Modal>
+        ) : null}
+        {isModifybookFormOpen ? (
+          <Modal
+            title='책 수정하기'
+            visible={!visible}
+            bodyStyle={{ background: 'lavenderblush' }}
+            footer={null}
+            onCancel={() => setIsModifybookFormOpen(!isModifybookFormOpen)}
+          >
+            <ModifyBook />
           </Modal>
         ) : null}
         <div style={{ background: '#fff', padding: 24, minHeight: 380 }}>

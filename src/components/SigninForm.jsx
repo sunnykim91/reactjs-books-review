@@ -48,8 +48,6 @@ const SigninForm = () => {
     const email = emailRef.current.state.value;
     const password = passwordRef.current.state.value;
 
-    console.log(email, password);
-
     try {
       setLoading(true);
       const response = await axios.post('https://api.marktube.tv/v1/me', {
@@ -100,7 +98,7 @@ const SigninForm = () => {
         <Button
           type='primary'
           style={{ marginBottom: '30px' }}
-          loading={false}
+          loading={loading}
           onClick={click}
         >
           SIGN IN

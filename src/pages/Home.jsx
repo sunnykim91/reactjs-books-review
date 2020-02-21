@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import withAuth from '../hocs/withAuth';
 import styled from 'styled-components';
 import Navigation from '../components/Navigation';
@@ -15,15 +15,22 @@ const StyleImg = styled.img`
 // const StyleDiv = styled.div``;
 
 const Home = ({ token }) => {
-  console.log(token);
-
   return (
     <Layout>
       <Navigation />
       <Content style={{ padding: '50px', background: 'lavenderblush' }}>
-        <div style={{ background: '#fff', padding: 24, minHeight: 380 }}>
+        <div
+          style={{
+            background: '#fff',
+            padding: 24,
+            minHeight: 380,
+            display: 'flex',
+            justifyContent: 'space-evenly',
+            alignItems: 'center'
+          }}
+        >
           <StyleImg src={bgBook} />
-          hello
+          <div style={{ fontSize: '20px' }}>Sunny의 개발서적 리스트입니다.</div>
         </div>
       </Content>
     </Layout>

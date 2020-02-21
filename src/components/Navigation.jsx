@@ -10,7 +10,6 @@ const Navigation = () => {
   const history = useHistory();
 
   const handleOnClick = e => {
-    console.log(e.key);
     if (e.key === '1') {
       history.push('/');
     } else if (e.key === '2') {
@@ -19,11 +18,8 @@ const Navigation = () => {
   };
 
   const signOut = async () => {
-    console.log('로그아웃');
-
     try {
       const token = localStorage.getItem('token');
-      console.log(token);
       const response = await axios.delete('https://api.marktube.tv/v1/me', {
         headers: {
           Authorization: `Bearer ${token}`
