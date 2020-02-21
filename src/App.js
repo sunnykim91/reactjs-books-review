@@ -1,8 +1,9 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Signin from './pages/Signin';
 import NotFound from './pages/NotFound';
+import BookList from './pages/BookList';
 import ErrorBoundary from 'react-error-boundary';
 
 const ErrorFallbackComponent = ({ error }) => <div>{error.message}</div>;
@@ -10,16 +11,9 @@ const ErrorFallbackComponent = ({ error }) => <div>{error.message}</div>;
 const App = () => (
   <ErrorBoundary FallbackComponent={ErrorFallbackComponent}>
     <BrowserRouter>
-      <ul>
-        <li>
-          <Link to='/'>홈입니다용</Link>
-        </li>
-        <li>
-          <Link to='/signin'>로그인</Link>
-        </li>
-      </ul>
       <Switch>
         <Route exact path='/signin' component={Signin} />
+        <Route exact path='/bookList' component={BookList} />
         <Route exact path='/' component={Home} />
         <Route component={NotFound} />
       </Switch>

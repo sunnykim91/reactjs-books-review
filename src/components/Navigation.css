@@ -1,0 +1,41 @@
+.ant-menu-horizontal > .ant-menu-item:hover,
+.ant-menu-horizontal > .ant-menu-submenu:hover,
+.ant-menu-horizontal > .ant-menu-item-active,
+.ant-menu-horizontal > .ant-menu-submenu-active,
+.ant-menu-horizontal > .ant-menu-item-open,
+.ant-menu-horizontal > .ant-menu-submenu-open,
+.ant-menu-horizontal > .ant-menu-item-selected,
+.ant-menu-horizontal > .ant-menu-submenu-selected {
+  color: hotpink;
+  border-bottom: 2px solid hotpink;
+}
+
+.ant-btn:hover,
+.ant-btn:focus,
+.ant-btn:active,
+.ant-btn.active {
+  text-decoration: none;
+  background: deeppink;
+}
+.ant-btn:hover,
+.ant-btn:focus {
+  color: pink;
+  border-color: pink;
+}
+
+#components-layout-demo-fixed .logo {
+  width: 120px;
+  height: 31px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px 24px 16px 0;
+  float: left;
+}
+
+.signOutBtn {
+  float: right;
+  margin-right: 50px;
+  margin-top: -50px;
+  background: floralwhite;
+  color: lightpink;
+  border: 1px solid lightpink;
+}
