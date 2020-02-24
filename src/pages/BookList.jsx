@@ -1,11 +1,12 @@
-import React, { useState, useEffect, createContext, useCallback } from 'react';
-import Navigation from '../components/Navigation';
-import withAuth from '../hocs/withAuth';
-import { Layout, Icon, Button, Modal, List } from 'antd';
-import AddBook from '../components/AddBook';
-import './BookList.css';
-import RequestService from '../service/RequestService';
-import ModifyBook from '../components/ModifyBook';
+import React, { useState, useEffect, createContext, useCallback } from "react";
+import Navigation from "../components/Navigation";
+import withAuth from "../hocs/withAuth";
+import { Layout, Icon, Button, Modal, List } from "antd";
+import AddBook from "../components/AddBook";
+import "./BookList.css";
+import RequestService from "../service/RequestService";
+import ModifyBook from "../components/ModifyBook";
+import { connect } from "react-redux";
 
 const { Content } = Layout;
 export const BookListContext = createContext(null);
@@ -53,15 +54,15 @@ const BookList = ({ token }) => {
       <Navigation />
       <Content
         style={{
-          padding: '50px',
-          background: 'lavenderblush'
+          padding: "50px",
+          background: "lavenderblush"
         }}
       >
         {isAddbookFormOpen ? (
           <Modal
-            title='책 추가하기'
+            title="책 추가하기"
             visible={!visible}
-            bodyStyle={{ background: 'lavenderblush' }}
+            bodyStyle={{ background: "lavenderblush" }}
             footer={null}
             onCancel={() => setIsAddbookFormOpen(!isAddbookFormOpen)}
           >
@@ -70,48 +71,48 @@ const BookList = ({ token }) => {
         ) : null}
         {isModifybookFormOpen ? (
           <Modal
-            title='책 수정하기'
+            title="책 수정하기"
             visible={!visible}
-            bodyStyle={{ background: 'lavenderblush' }}
+            bodyStyle={{ background: "lavenderblush" }}
             footer={null}
             onCancel={() => setIsModifybookFormOpen(!isModifybookFormOpen)}
           >
             <ModifyBook />
           </Modal>
         ) : null}
-        <div style={{ background: '#fff', padding: 24, minHeight: 380 }}>
-          <div className='addBookBtn'>
+        <div style={{ background: "#fff", padding: 24, minHeight: 380 }}>
+          <div className="addBookBtn">
             <Button onClick={() => setIsAddbookFormOpen(!isAddbookFormOpen)}>
               책 추가하기
             </Button>
           </div>
           <List
-            itemLayout='vertical'
-            size='large'
+            itemLayout="vertical"
+            size="large"
             pagination={{
               pageSize: 5
             }}
             dataSource={books}
             footer={
-              <div className='footer'>
+              <div className="footer">
                 개발 서적 평가 서비스 <b>by Sunnykim</b>
               </div>
             }
             renderItem={book => (
               <List.Item
                 key={book.bookId}
-                extra={<img width={100} alt='logo' src={book.url} />}
+                extra={<img width={100} alt="logo" src={book.url} />}
               >
                 <List.Item.Meta title={book.title} />
-                <div className='author'>저자 : {book.author}</div>
-                <div className='description'>설명 : {book.message}</div>
-                <div className='textEditDeleteBtn'>
+                <div className="author">저자 : {book.author}</div>
+                <div className="description">설명 : {book.message}</div>
+                <div className="textEditDeleteBtn">
                   <Icon
-                    type='edit'
-                    className='editBtn'
+                    type="edit"
+                    className="editBtn"
                     onClick={() => modifyBook(book.bookId)}
                   />
-                  <Icon type='delete' onClick={() => removeBook(book.bookId)} />
+                  <Icon type="delete" onClick={() => removeBook(book.bookId)} />
                 </div>
               </List.Item>
             )}
