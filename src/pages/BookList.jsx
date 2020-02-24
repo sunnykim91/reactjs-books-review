@@ -6,7 +6,6 @@ import AddBook from "../components/AddBook";
 import "./BookList.css";
 import RequestService from "../service/RequestService";
 import ModifyBook from "../components/ModifyBook";
-import { connect } from "react-redux";
 
 const { Content } = Layout;
 export const BookListContext = createContext(null);
