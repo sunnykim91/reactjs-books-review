@@ -1,27 +1,27 @@
 {
   "files": {
     "main.css": "/reactjs-books-review/static/css/main.9f9e3df2.chunk.css",
-    "main.js": "/reactjs-books-review/static/js/main.91543ab5.chunk.js",
-    "main.js.map": "/reactjs-books-review/static/js/main.91543ab5.chunk.js.map",
-    "runtime-main.js": "/reactjs-books-review/static/js/runtime-main.12ed5b1a.js",
-    "runtime-main.js.map": "/reactjs-books-review/static/js/runtime-main.12ed5b1a.js.map",
-    "static/css/2.ff8bd605.chunk.css": "/reactjs-books-review/static/css/2.ff8bd605.chunk.css",
-    "static/js/2.0b433f1f.chunk.js": "/reactjs-books-review/static/js/2.0b433f1f.chunk.js",
-    "static/js/2.0b433f1f.chunk.js.map": "/reactjs-books-review/static/js/2.0b433f1f.chunk.js.map",
+    "main.js": "/reactjs-books-review/static/js/main.0575b4ac.chunk.js",
+    "main.js.map": "/reactjs-books-review/static/js/main.0575b4ac.chunk.js.map",
+    "runtime-main.js": "/reactjs-books-review/static/js/runtime-main.156d7dc4.js",
+    "runtime-main.js.map": "/reactjs-books-review/static/js/runtime-main.156d7dc4.js.map",
+    "static/css/2.5bc4965f.chunk.css": "/reactjs-books-review/static/css/2.5bc4965f.chunk.css",
+    "static/js/2.4e9434fe.chunk.js": "/reactjs-books-review/static/js/2.4e9434fe.chunk.js",
+    "static/js/2.4e9434fe.chunk.js.map": "/reactjs-books-review/static/js/2.4e9434fe.chunk.js.map",
     "index.html": "/reactjs-books-review/index.html",
-    "precache-manifest.14f6b47c42131abb64e4a17e7733b79c.js": "/reactjs-books-review/precache-manifest.14f6b47c42131abb64e4a17e7733b79c.js",
+    "precache-manifest.d437be6d0d4bbd8097883f2d4a4d22fe.js": "/reactjs-books-review/precache-manifest.d437be6d0d4bbd8097883f2d4a4d22fe.js",
     "service-worker.js": "/reactjs-books-review/service-worker.js",
-    "static/css/2.ff8bd605.chunk.css.map": "/reactjs-books-review/static/css/2.ff8bd605.chunk.css.map",
+    "static/css/2.5bc4965f.chunk.css.map": "/reactjs-books-review/static/css/2.5bc4965f.chunk.css.map",
     "static/css/main.9f9e3df2.chunk.css.map": "/reactjs-books-review/static/css/main.9f9e3df2.chunk.css.map",
-    "static/js/2.0b433f1f.chunk.js.LICENSE": "/reactjs-books-review/static/js/2.0b433f1f.chunk.js.LICENSE",
+    "static/js/2.4e9434fe.chunk.js.LICENSE": "/reactjs-books-review/static/js/2.4e9434fe.chunk.js.LICENSE",
     "static/media/bg_book.jpg": "/reactjs-books-review/static/media/bg_book.313bd1c7.jpg",
     "static/media/bg_signin.png": "/reactjs-books-review/static/media/bg_signin.ef01ffe9.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.12ed5b1a.js",
-    "static/css/2.ff8bd605.chunk.css",
-    "static/js/2.0b433f1f.chunk.js",
+    "static/js/runtime-main.156d7dc4.js",
+    "static/css/2.5bc4965f.chunk.css",
+    "static/js/2.4e9434fe.chunk.js",
     "static/css/main.9f9e3df2.chunk.css",
-    "static/js/main.91543ab5.chunk.js"
+    "static/js/main.0575b4ac.chunk.js"
   ]
 }
