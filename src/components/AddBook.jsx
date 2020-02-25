@@ -1,30 +1,28 @@
 import React, { useState } from "react";
 import withAuth from "../hocs/withAuth";
-import axios from "axios";
 import { Input, Button } from "antd";
 import "./AddBook.css";
 
-const AddBook = ({ token }) => {
+const AddBook = ({
+  token,
+  addBooks,
+  isAddbookFormOpen,
+  setIsAddbookFormOpen
+}) => {
   const [title, setTitle] = useState("");
   const [message, setMessage] = useState("");
   const [author, setAuthor] = useState("");
   const [url, setUrl] = useState("");
 
   const onClickaddBook = async () => {
-    let data = {
+    let book = {
       title: title,
       message: message,
       author: author,
       url: url
     };
-    // const response = await axios.post('https://api.marktube.tv/v1/book', data, {
-    //   headers: {
-    //     Authorization: `Bearer ${token}`
-    //   }
-    // });
-    // if (response.status === 200) {
-    //   getBookList();
-    // }
+    await addBooks(token, book);
+    setIsAddbookFormOpen(!isAddbookFormOpen);
   };
 
   const handleTitle = e => {

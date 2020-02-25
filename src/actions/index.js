@@ -36,3 +36,21 @@ export function clearError() {
     type: CLEAR_ERROR
   };
 }
+
+export const ADD_BOOK = "ADD_BOOK";
+
+export function addBooks(book) {
+  return {
+    type: ADD_BOOK,
+    book
+  };
+}
+
+export const DELETE_BOOK = "DELETE_BOOK";
+
+export function deleteBook(bookId) {
+  return {
+    type: DELETE_BOOK,
+    bookId
+  };
+}
