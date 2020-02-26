@@ -1,80 +1,62 @@
-// import React, { useState, useEffect, useContext } from 'react';
-// import withAuth from '../hocs/withAuth';
-// import { Input, Button } from 'antd';
-// import { BookListContext } from '../pages/BookList';
-// import RequestService from '../service/RequestService';
-// import './AddBook.css';
+import React, { useState, useEffect } from "react";
+import withAuth from "../hocs/withAuth";
+import { Input, Button } from "antd";
+import "./AddBook.css";
 
-// const ModifyBook = ({ token }) => {
-//   const [title, setTitle] = useState('');
-//   const [message, setMessage] = useState('');
-//   const [author, setAuthor] = useState('');
-//   const [url, setUrl] = useState('');
+const ModifyBook = ({
+  token,
+  isModifybookFormOpen,
+  setIsModifybookFormOpen,
+  targetId,
+  books,
+  modifyBook
+}) => {
+  const [title, setTitle] = useState("");
+  const [message, setMessage] = useState("");
+  const [author, setAuthor] = useState("");
+  const [url, setUrl] = useState("");
 
-//   const onClickModifyBook = async () => {
-//     let bookInfo = {
-//       title: title,
-//       message: message,
-//       author: author,
-//       url: url
-//     };
-//     const response = await RequestService.editBook(
-//       token,
-//       targetId,
-//       bookInfo
-//     );
-//     if (response.status === 200) {
-//       getBookList();
-//     }
-//     contextValue.setIsModifybookFormOpen(!.isModifybookFormOpen);
-//   };
+  const onClickModifyBook = async () => {
+    let book = {
+      title: title,
+      message: message,
+      author: author,
+      url: url
+    };
+    await modifyBook(token, targetId, book);
+    setIsModifybookFormOpen(!isModifybookFormOpen);
+  };
 
-//   const handleTitle = e => {
-//     setTitle(e.target.value);
-//   };
+  const handleTitle = e => {
+    setTitle(e.target.value);
+  };
 
-//   const handleMessage = e => {
-//     setMessage(e.target.value);
-//   };
-//   const handleAuthor = e => {
-//     setAuthor(e.target.value);
-//   };
-//   const handleURL = e => {
-//     setUrl(e.target.value);
-//   };
+  const handleMessage = e => {
+    setMessage(e.target.value);
+  };
+  const handleAuthor = e => {
+    setAuthor(e.target.value);
+  };
+  const handleURL = e => {
+    setUrl(e.target.value);
+  };
 
-//   useEffect(() => {
-//     setTitle(
-//       contextValue.books.filter(
-//         book => book.bookId === contextValue.targetId
-//       )[0].title
-//     );
-//     setMessage(
-//       contextValue.books.filter(
-//         book => book.bookId === contextValue.targetId
-//       )[0].message
-//     );
-//     setAuthor(
-//       contextValue.books.filter(
-//         book => book.bookId === contextValue.targetId
-//       )[0].author
-//     );
-//     setUrl(
-//       contextValue.books.filter(
-//         book => book.bookId === contextValue.targetId
-//       )[0].url
-//     );
-//   }, [contextValue.books, contextValue.targetId]);
+  useEffect(() => {
+    setTitle(books.filter(book => book.bookId === targetId)[0].title);
+    setMessage(books.filter(book => book.bookId === targetId)[0].message);
+    setAuthor(books.filter(book => book.bookId === targetId)[0].author);
+    setUrl(books.filter(book => book.bookId === targetId)[0].url);
+  }, [books, targetId]);
 
-//   return (
-//     <div className='addBookModal'>
-//       책 제목 : <Input value={title} onChange={handleTitle} />책 설명 :{' '}
-//       <Input.TextArea value={message} onChange={handleMessage} />책 저자 :{' '}
-//       <Input value={author} onChange={handleAuthor} />
-//       책 이미지 : <Input value={url} onChange={handleURL} />
-//       <Button onClick={onClickModifyBook}>책 수정</Button>
-//     </div>
-//   );
-// };
+  return (
+    <div className="addBookModal">
+      책 제목 : <Input value={title} onChange={handleTitle} />책 설명 :{" "}
+      <Input.TextArea value={message} onChange={handleMessage} />책 저자 :{" "}
+      <Input value={author} onChange={handleAuthor} />
+      책 이미지 : <Input value={url} onChange={handleURL} />
+      <Button onClick={onClickModifyBook}>책 수정</Button>
+    </div>
+  );
+};
 
-// export default withAuth(ModifyBook);
+export default withAuth(ModifyBook);

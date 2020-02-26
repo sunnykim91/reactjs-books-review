@@ -54,3 +54,13 @@ export function deleteBook(bookId) {
     bookId
   };
 }
+
+export const MODIFY_BOOK = "MODIFY_BOOK";
+
+export function modifyBook(bookId, book) {
+  return {
+    type: MODIFY_BOOK,
+    bookId,
+    book
+  };
+}

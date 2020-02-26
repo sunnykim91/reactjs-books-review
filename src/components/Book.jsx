@@ -4,7 +4,7 @@ import withAuth from "../hocs/withAuth";
 import { Layout, Icon, Button, Modal, List } from "antd";
 import AddBookContainer from "../container/AddBookContainer";
 
-import ModifyBook from "../components/ModifyBook";
+import ModifyBookContainer from "../container/ModifyBookContainer";
 const { Content } = Layout;
 
 const Book = ({ token, books, loading, error, requestBooks, deleteBook }) => {
@@ -54,7 +54,13 @@ const Book = ({ token, books, loading, error, requestBooks, deleteBook }) => {
             footer={null}
             onCancel={() => setIsModifybookFormOpen(!isModifybookFormOpen)}
           >
-            <ModifyBook />
+            <ModifyBookContainer
+              token={token}
+              isModifybookFormOpen={isModifybookFormOpen}
+              setIsModifybookFormOpen={setIsModifybookFormOpen}
+              targetId={targetId}
+              setTargetId={setTargetId}
+            />
           </Modal>
         ) : null}
         <div style={{ background: "#fff", padding: 24, minHeight: 380 }}>

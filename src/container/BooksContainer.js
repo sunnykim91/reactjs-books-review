@@ -32,7 +32,6 @@ const mapDispatchToProps = dispatch => ({
   },
   deleteBook: (token, bookId) => {
     RequestService.deleteBook(token, bookId).then(res => {
-      console.log(res);
       dispatch(deleteBook(bookId));
     });
   }
