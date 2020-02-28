@@ -1,17 +1,16 @@
 {
-  "homepage": "https://sunnykim91.github.io/reactjs-books-review",
+  "homepage": "http://sunnykim91.github.io/reactjs-books-review",
   "name": "reactjs-books-review",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
+    "@testing-library/react": "^9.4.1",
     "@testing-library/user-event": "^7.1.2",
-    "antd": "^3.26.7",
+    "antd": "^3.26.12",
     "axios": "^0.19.1",
-    "gh-pages": "^2.2.0",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
     "react-error-boundary": "^1.2.5",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
@@ -60,6 +59,7 @@
   },
   "devDependencies": {
     "eslint-config-prettier": "^6.9.0",
+    "gh-pages": "^2.2.0",
     "husky": "^4.0.10",
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1"
