@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "961c5169d13cf87d86d5d5e9a9799ca6",
+    "revision": "80bb697146b07eb4ec1255292cf80317",
     "url": "/reactjs-books-review/index.html"
   },
   {
-    "revision": "2a2754be1d88341ec6b6",
+    "revision": "255b4a8234955591ab73",
     "url": "/reactjs-books-review/static/css/2.d88ce3aa.chunk.css"
   },
   {
-    "revision": "dad5735d3a8f40ac807a",
+    "revision": "938b14cac165bbd54888",
     "url": "/reactjs-books-review/static/css/main.9f9e3df2.chunk.css"
   },
   {
-    "revision": "2a2754be1d88341ec6b6",
-    "url": "/reactjs-books-review/static/js/2.197000bc.chunk.js"
+    "revision": "255b4a8234955591ab73",
+    "url": "/reactjs-books-review/static/js/2.86235c88.chunk.js"
   },
   {
     "revision": "128d8b08aeda244c2bd9e0ac3d0c6c84",
-    "url": "/reactjs-books-review/static/js/2.197000bc.chunk.js.LICENSE"
+    "url": "/reactjs-books-review/static/js/2.86235c88.chunk.js.LICENSE"
   },
   {
-    "revision": "dad5735d3a8f40ac807a",
-    "url": "/reactjs-books-review/static/js/main.50e22d88.chunk.js"
+    "revision": "938b14cac165bbd54888",
+    "url": "/reactjs-books-review/static/js/main.9bcbcec3.chunk.js"
   },
   {
     "revision": "913571fd7c7024317fd9",
